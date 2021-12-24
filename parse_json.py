@@ -5,6 +5,9 @@ from typing import List, Dict, Union
 
 
 def parse_json(path: str, out_file: str = 'test_parse_json.xlsx'):
+    if not os.path.exists(path):
+       print(f'Такого файла не существует {path}')
+       return
     with open(path, 'rb') as file:
         try:
             json_data: Union[List, Dict] = json.load(file)
